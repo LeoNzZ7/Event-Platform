@@ -28,6 +28,9 @@ module.exports = {
           600: '#29292E',
           700: '#121214',
           900: '#09090A'
+        },
+        fontFamily: {
+          sans: 'Roboto sans-serif',
         }
       }
     },
