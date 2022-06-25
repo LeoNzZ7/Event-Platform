@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useParams,useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { Header } from "../components/header"
 import { SideBar } from "../components/sideBar"
 import { VideoPlayer } from "../components/videoPlayer"
@@ -10,14 +10,16 @@ export const Event = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate('lesson/aula-01')
-  }, [])
+    if(!slug) {
+      navigate('lesson/aula-01');
+    } 
+  }, []);
 
-  return(
+  return (
     <div className="flex flex-col min-h-screen">
-      <Header/>
+      <Header />
       <main className="flex flex-1">
-        <VideoPlayer lessonSlug={slug as string}/>
+        <VideoPlayer lessonSlug={slug as string} />
         <SideBar/>
       </main>
     </div>

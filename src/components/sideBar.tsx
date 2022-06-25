@@ -26,7 +26,6 @@ interface GetLessonsQueryResponse {
 
 export const SideBar = () => {
   const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY);
-  console.log(data?.lessons[0].availableAt)
 
   return(
     <aside className="w-[348px] bg-gray-700 p-6 border-l border-gray-600">
@@ -36,7 +35,7 @@ export const SideBar = () => {
       
       <div className='flex flex-col gap-8' >
         {data?.lessons.map((item,index) => (
-          <div className='flex flex-col gap-8' >
+          <div className='flex flex-col gap-8'>
           <Lesson 
             key={index}
             title={item.title}

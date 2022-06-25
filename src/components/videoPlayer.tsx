@@ -3,6 +3,9 @@ import { CaretRight, DiscordLogo, FileArrowDown, Lightning, Spinner } from "phos
 import { gql, useQuery } from "@apollo/client";
 
 import '@vime/core/themes/default.css'
+import { isPast } from "date-fns/esm";
+import { format } from "date-fns";
+import ptBR from 'date-fns/locale/pt-BR';
 
 interface VideoProps {
   lessonSlug: string;
@@ -18,6 +21,7 @@ interface GetLessonBySlugResponse {
       avatarURL: string,
       name: string
     }
+    availableAt: Date,
   }
 }
 
@@ -32,6 +36,7 @@ const GET_LESSONS_BY_SLUG_QUERY = gql`
         bio
         name
       }
+      availableAt
     }
   }
 `;
@@ -48,6 +53,21 @@ export const VideoPlayer = (props: VideoProps) => {
       <div className="flex-1 flex justify-center items-center flex-col">
         <span className="text-3xl font-bold">Carregando conteúdo, por favor aguarde</span>
         <Spinner size={75} className='animate-spin'/>
+      </div>
+    );
+  };
+
+  const availableDateFormated = format(new Date(data?.lesson.availableAt as Date), "EEEE' • 'd' de ' MMMM' • ' k 'h' mm", {
+    locale: ptBR,
+  });
+  
+  const isLessonAvaible = isPast(new Date(data?.lesson.availableAt));
+
+  if(!isLessonAvaible) {
+    return(
+      <div className="flex-1 flex justify-center items-center flex-col">
+        <span className="text-3xl font-bold">Essa aula estará disponivel</span>
+        <span className="text-3xl font-bold">{availableDateFormated}</span>
       </div>
     );
   };
