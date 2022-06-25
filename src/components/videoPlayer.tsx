@@ -1,5 +1,5 @@
 import { DefaultUi, Player, Youtube } from "@vime/react";
-import { CaretRight, DiscordLogo, FileArrowDown, Lightning } from "phosphor-react";
+import { CaretRight, DiscordLogo, FileArrowDown, Lightning, Spinner } from "phosphor-react";
 import { gql, useQuery } from "@apollo/client";
 
 import '@vime/core/themes/default.css'
@@ -45,8 +45,9 @@ export const VideoPlayer = (props: VideoProps) => {
 
   if(!data) {
     return (
-      <div className="flex-1">
-        <p>Carregando...</p>
+      <div className="flex-1 flex justify-center items-center flex-col">
+        <span className="text-3xl font-bold">Carregando conteúdo, por favor aguarde</span>
+        <Spinner size={75} className='animate-spin'/>
       </div>
     );
   };
