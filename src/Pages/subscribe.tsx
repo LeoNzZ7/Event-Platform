@@ -1,6 +1,37 @@
+import { gql, useMutation } from "@apollo/client";
+import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Logo } from "../components/logo";
 
+const CREATE_SUBSCRUBER_MUTATION = gql`
+  mutation createSubscriber($name: String!, $email: String!) {
+    createSubscriber(data: {name: $name, email: $email}) {
+      id
+    }
+  }
+`
+
 export const Subscribe = () => {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const [createSubscriber, { loading }] = useMutation(CREATE_SUBSCRUBER_MUTATION);
+
+  const handleSubscirebe = (e: FormEvent) => {
+    e.preventDefault();
+
+    createSubscriber({
+      variables: {
+        name,
+        email
+      }
+    });
+
+    navigate('/event')
+  };
+
   return (
     <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col bg-center items-center">
       <div className="w-full max-w-[1100px] flex items-center bg-cover bg-center justify-between mt-10 mx-auto">
@@ -15,15 +46,18 @@ export const Subscribe = () => {
         </div>
         <div className="p-8 bg-gray-700 border border-gray-500 rounded" >
           <strong className="text-2xl mb-6 block">inscreva-se gratuitamente</strong>
-          <form action="" className="flex flex-col gap-2 w-full"> 
+          <form onSubmit={handleSubscirebe} action="" className="flex flex-col gap-2 w-full"> 
             <input type='text' 
             placeholder="Seu nome completo" 
+            value={name} onChange={e => setName(e.target.value)}
             className="bg-gray-900 roundend px-5 h-14 "/>
             <input type='email' 
             placeholder="Digite seu email" 
+            value={email} onChange={e => setEmail(e.target.value)}
             className="bg-gray-900 roundend px-5 h-14" />
             <button type='submit' 
-            className="bg-green-500 uppercase py-4 mt-4 roundend font-bold text-small hover:bg-green-700 transition-colors"
+            disabled={loading}
+            className="bg-green-500 uppercase py-4 mt-4 roundend disabled:opacity-50 font-bold text-small hover:bg-green-700 transition-colors"
             >Garantir minha vaga</button>
           </form>
         </div>
