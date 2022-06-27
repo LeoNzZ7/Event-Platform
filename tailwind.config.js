@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'mobile': '300px',
+        // => @media (min-width: 280px) { ... }
+      },
       backgroundImage: {
         blur: 'url(/src/assets/blur.png)',
       },
