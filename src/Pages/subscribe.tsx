@@ -36,7 +36,7 @@ export const Subscribe = () => {
             Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado.
           </p>
         </div>
-        <div className="p-8 bg-gray-700 border border-gray-500 rounded mobile:w-[110%]">
+        <div className="p-8 bg-gray-700 border border-gray-500 rounded mobile:w-screen mobile:p-5">
           <strong className="text-2xl mb-6 block">inscreva-se gratuitamente</strong>
           <form onSubmit={handleSubscirebe} action="" className="flex flex-col gap-2 w-full"> 
             <input type='text' 

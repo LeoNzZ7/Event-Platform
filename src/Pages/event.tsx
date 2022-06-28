@@ -16,7 +16,7 @@ export const Event = () => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen mobile:max-w-[450px]">
       <Header />
       <main className="flex flex-1">
         <VideoPlayer lessonSlug={slug as string} />

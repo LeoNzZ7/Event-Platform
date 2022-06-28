@@ -6,8 +6,9 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'mobile': '300px',
-        // => @media (min-width: 280px) { ... }
+        'mobile': [
+          {'min': '300px', 'max': '450px'}
+        ],
       },
       backgroundImage: {
         blur: 'url(/src/assets/blur.png)',

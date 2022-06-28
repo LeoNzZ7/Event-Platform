@@ -59,15 +59,15 @@ export const VideoPlayer = (props: VideoProps) => {
   return(
     <div className="flex-1">
       <div className="bg-black flex justify-center">
-        <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video"> 
+        <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video mobile:max-w-[350px] mobile:flex-1"> 
           <Player>
             <Youtube videoId={data.lesson.videoId}/>
             <DefaultUi/>
           </Player>
         </div> 
       </div>
-      <div className="p-8 max-w-[1100px] mx-auto">
-        <div className="flex items-start gap-16" >
+      <div className="p-8 max-w-[1100px] mx-auto mobile:max-w-[350px] mobile:py-4 mobile:px-2">
+        <div className="flex items-start gap-16 mobile:flex-col mobile:items-center">
           <div className="flex-1" >
             <h1 className="text-2xl font-bold ">
               {data.lesson.title}
@@ -94,7 +94,7 @@ export const VideoPlayer = (props: VideoProps) => {
               </>
             )}
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 mobile:w-full">
             <a href="" className="p-4 text-sm bg-green-500 flex items-center rounded uppercase font-bold gap-2 hover:bg-green-700 transition-colors">
               <DiscordLogo size={24}/>
               Comunidade do discord
@@ -105,9 +105,9 @@ export const VideoPlayer = (props: VideoProps) => {
             </a>
           </div>
         </div>
-        <div className="gap-8 mt-20 grid-cols-2 flex" >
-          <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
-            <div className="bg-green-700 h-full p-6 flex items-center" >
+        <div className="gap-8 mt-20 grid-cols-2 flex mobile:flex-col mobile:my-10">
+          <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors mobile:h-[125px] mobile:justify-center mobile:items-center">
+            <div className="bg-green-700 h-full p-6 flex items-center">
               <FileArrowDown size={40} />
             </div>
             <div className="py-6 leading-relaxed" >
@@ -118,8 +118,8 @@ export const VideoPlayer = (props: VideoProps) => {
               <CaretRight size={24} />
             </div>
           </a>
-          <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
-            <div className="bg-green-700 h-full p-6 flex items-center" >
+          <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors mobile:h-[125px] mobile:justify-center mobile:items-center">
+            <div className="bg-green-700 h-full p-6 flex items-center">
               <FileArrowDown size={40} />
             </div>
             <div className="py-6 leading-relaxed" >
